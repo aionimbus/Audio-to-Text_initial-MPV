@@ -1,0 +1,10 @@
+requirements.txt
+
+Libraries Used:
+numpy
+librosa
+soundfile
+torch
+pyannote.audio
+transformers
+pydub

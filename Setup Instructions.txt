@@ -1,0 +1,159 @@
+Setup Instructions
+
+Prerequisites
+Python 3.7 or higher
+Git (optional, for cloning the repository)
+A Hugging Face account with access tokens for the required models.
+Clone the Repository
+
+You can clone this repository using Git:
+
+git clone https://github.com/your_username/your_repository.git
+cd your_repository
+
+
+Alternatively, you can download the repository as a ZIP file and extract it.
+
+How to install with Windows:
+
+Install Python: If you haven't already, download and install Python from python.org. Make sure to check "Add Python to PATH" during installation.
+
+Create a Virtual Environment (optional but recommended):
+
+python -m venv venv
+venv\Scripts\activate
+Update Pip:
+
+python -m pip install --upgrade pip
+
+
+Install Dependencies:
+
+pip install -r numpy, librosa, soundfile, torch, pyannote.audio, transformers, pydub
+
+
+Install PyTorch:
+
+Visit PyTorch Get Started and select the appropriate options for your system. For example:
+
+
+# For CPU-only support
+pip install torch torchvision torchaudio
+
+# For CUDA 11.7
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu117
+macOS
+
+
+Install Homebrew (if not already installed):
+
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+
+Install Python:
+
+brew install python
+
+
+Create a Virtual Environment (optional but recommended):
+
+python3 -m venv venv
+source venv/bin/activate
+
+
+Update Pip:
+
+python3 -m pip install --upgrade pip
+Install Dependencies:
+
+pip install -r requirements.txt
+Install PyTorch:
+
+Visit PyTorch Get Started and select the appropriate options for your system. For example:
+
+
+# For CPU-only support
+pip install torch torchvision torchaudio
+Additional Setup
+Hugging Face Authentication Tokens
+Create a Hugging Face Account:
+
+Sign up at Hugging Face.
+Generate Access Tokens:
+
+Navigate to your settings page.
+Create a new token with the necessary scopes.
+Update the Script with Tokens:
+
+Open process_audio.py.
+Replace "your_hugging_face_authentication_token_here" with your actual Hugging Face token in the diarize_speakers and transcribe_audio functions.
+hf_auth_token = "your_actual_hugging_face_token"
+
+Audio File
+Place your audio file in the project directory or provide the full path.
+Supported formats include WAV, MP3, etc.
+Update the audio_file_path variable in process_audio.py with the path to your audio file.
+python
+
+audio_file_path = 'path_to_your_audio_file.wav'  # Replace with your audio file path
+Running the Script
+Activate your virtual environment if you haven't already:
+
+Windows:
+venv\Scripts\activate
+macOS:
+
+
+source venv/bin/activate
+
+
+Run the script:
+
+python process_audio.py
+
+
+
+The script will process the audio file and print out the transcription along with speaker labels and silence markers.
+
+
+Troubleshooting
+Module Not Found Errors:
+
+Ensure all dependencies are installed correctly.
+Activate the virtual environment before running the script.
+
+
+Authentication Errors:
+
+Double-check that your Hugging Face tokens are correctly placed in the script.
+Ensure your tokens have the necessary permissions.
+
+
+CUDA Errors:
+
+If you don't have a compatible GPU, make sure you're using the CPU versions of the libraries.
+
+
+PyAnnote Pipeline Errors:
+
+Ensure that you have access to the pyannote/speaker-diarization model.
+You might need to accept the model's terms and conditions on the Hugging Face website.
+Notes and Considerations
+
+
+Performance:
+
+Processing time can be significant, especially for long audio files and if running on CPU.
+
+
+Audio Quality:
+
+Clear audio with minimal background noise will yield better results.
+Model Limitations:
+
+The models may not perform well with overlapping speech or very short segments.
+
+
+Time Alignment:
+
+The script uses a basic method to estimate timing. For more accurate results, consider integrating timestamp information from the transcription model if available.
